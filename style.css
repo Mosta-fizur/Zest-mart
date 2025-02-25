@@ -260,11 +260,13 @@ hr{
 }
 footer{
     background-color: #222222;
+    
 }
 footer h5{
     color: #d8d8d8;
     font-weight: 700;
     font-size: 1.2rem;
+    
 }
 footer li{
     padding-bottom: 4px;
