@@ -101,15 +101,17 @@ button:hover {
     #navbarSupportedContent>ul>li:nth-child(n)>a {
         padding: 5px 0px;
     }
-    #login .box-area{
+
+    #login .box-area {
         margin: 0 10px;
     }
-    #login .left-box{
-        
+
+    #login .left-box {
         overflow: hidden;
     }
-    #login .right-box{
-padding: 20px;
+
+    #login .right-box {
+        padding: 20px;
     }
 }
 
@@ -375,9 +377,10 @@ footer .copyright a:hover {
 }
 
 /* cart */
-#cart-container{
+#cart-container {
     overflow-x: auto;
 }
+
 #cart-container table {
     border-collapse: collapse;
     width: 100%;
@@ -428,50 +431,58 @@ footer .copyright a:hover {
 }
 
 #cart-bottom .coupon h5,
-#cart-bottom .total h5{
+#cart-bottom .total h5 {
     background: coral;
     color: #fff;
     border: none;
     padding: 6px 12px;
     font-weight: bolder;
 }
+
 #cart-bottom .coupon input,
 #cart-bottom .coupon p {
     padding: 0 12px;
 }
+
 #cart-bottom .coupon input,
-#cart-bottom .coupon button{
+#cart-bottom .coupon button {
     height: 48px;
     margin: 0 0 20px 12px;
 }
-#cart-bottom .total div>div{
-padding: 0 12px;
+
+#cart-bottom .total div>div {
+    padding: 0 12px;
 }
-#cart-bottom .total .second-hr{
-background: #b8b7b3;
-width: 100%;
-height: 1px;
+
+#cart-bottom .total .second-hr {
+    background: #b8b7b3;
+    width: 100%;
+    height: 1px;
 }
-#cart-bottom .total  div>button{
-margin: 0 12px 20px 0;
-display: flex;
-justify-content: end;
+
+#cart-bottom .total div>button {
+    margin: 0 12px 20px 0;
+    display: flex;
+    justify-content: end;
 }
 
 /* login */
 
-#login .left-box{
+#login .left-box {
     background-color: #b8b7b3;
 }
-#login .right-box{
-padding: 40px 30px 40px 40px;
+
+#login .right-box {
+    padding: 40px 30px 40px 40px;
 }
-#login .right-box .sign-btn{
+
+#login .right-box .sign-btn {
     background-color: none;
-    
-    
+
+
 }
-#login .right-box .google{
+
+#login .right-box .google {
     width: 20px;
 
 }
