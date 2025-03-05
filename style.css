@@ -99,7 +99,17 @@ button:hover {
     }
 
     #navbarSupportedContent>ul>li:nth-child(n)>a {
-        padding: 7px 0px;
+        padding: 5px 0px;
+    }
+    #login .box-area{
+        margin: 0 10px;
+    }
+    #login .left-box{
+        
+        overflow: hidden;
+    }
+    #login .right-box{
+padding: 20px;
     }
 }
 
@@ -452,4 +462,16 @@ justify-content: end;
 
 #login .left-box{
     background-color: #b8b7b3;
+}
+#login .right-box{
+padding: 40px 30px 40px 40px;
+}
+#login .right-box .sign-btn{
+    background-color: none;
+    
+    
+}
+#login .right-box .google{
+    width: 20px;
+
 }
