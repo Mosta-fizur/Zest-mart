@@ -447,3 +447,9 @@ margin: 0 12px 20px 0;
 display: flex;
 justify-content: end;
 }
+
+/* login */
+
+#login .left-box{
+    background-color: #b8b7b3;
+}
