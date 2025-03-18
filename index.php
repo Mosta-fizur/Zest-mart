@@ -31,7 +31,7 @@ git push -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
 
           <li class="nav-item">
@@ -49,22 +49,26 @@ git push -->
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="#">Contact Us</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#"><i class="fa-solid fa-magnifying-glass"></i>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="cart.html">
-              <i class="fa-solid fa-bag-shopping"></i></a>
+              <i class="fa-solid fa-bag-shopping"></i><sup>1</sup></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link log_nav pb-1" aria-current="page" href="login.html">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.html">
               Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link reg_nav pb-1" aria-current="page" href="registration.html">
+            <a class="nav-link reg_nav pb-1 my-1" aria-current="page" href="registration.html">
               Register</a>
           </li>
+          <li class="nav-item">
+            <form class="nav-link d-flex " role="search">
+        <input class="m-2 py-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-dark " type="submit">Search</button>
+      </form>
+          </li>
+          
 
       </div>
     </div>
@@ -144,7 +148,8 @@ git push -->
         <h4>
           4500 Taka
         </h4>
-        <button class="buy-btn">Buy Now</button>
+        <a href=""><button class="buy-btn">Buy Now</button></a>
+        
       </div>
       <div class="product text-center col-lg-3 col-md-4 col-12">
         <img class="img-fluid mb-3" src="./image/featured/2.jpg" alt="">
@@ -448,7 +453,7 @@ git push -->
     </div>
   </section>
 
-
+<!-- footer -->
   <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">
       <div class="footer-one col-lg-3 col-md-3 col-12">

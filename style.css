@@ -58,7 +58,7 @@ button:hover {
 }
 
 .navbar {
-    font-size: x-large;
+    font-size: medium;
     top: 0;
     left: 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -127,6 +127,7 @@ button:hover {
     border: 3px solid black;
     border-radius: 5px;
 }
+
 .navbar-light .navbar-nav .nav-item .reg_nav{
     color: #b6b6b6;
     background-color: black;
@@ -498,3 +499,4 @@ footer .copyright a:hover {
     width: 20px;
 
 }
+
