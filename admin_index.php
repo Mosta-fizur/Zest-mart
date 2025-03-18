@@ -1,3 +1,7 @@
+<?php
+include("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,23 +53,40 @@
           Brand
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <?php
+              $select_brands = "Select * from `brands`";
+              $result_brands = mysqli_query($conn, $select_brands);
+              // $row_data = mysqli_fetch_assoc($result_brands);
+              // echo"".$row_data["brand_title"];
+while($row_data = mysqli_fetch_assoc($result_brands)) {
+  $brand_title = $row_data["brand_title"];
+  $brand_id = $row_data["brand_id"];
+  echo '<li class= ""><a class="dropdown-item" href="">' .$brand_title.'</a>';
+  
+}
+            ?>
             
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
 
           
-          <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Catergory
+          Category
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <?php
+              $select_categories = "Select * from `categories`";
+              $result_categories = mysqli_query($conn, $select_categories);
+              
+while($row_data = mysqli_fetch_assoc($result_categories)) {
+  $category_title = $row_data["category_title"];
+  $category_id = $row_data["category_id"];
+  echo '<li class= ""><a class="dropdown-item" href="">' .$category_title.'</a>';
+  
+}
+            ?>
             
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
           
@@ -110,7 +131,7 @@
           <p class="text-center">Admin Name</p>
         </div>
         <div class="button text-center ">
-        <button class="p-2 my-2"><a href="" class="nav-link">Insert Products</a></button>
+        <button class="p-2 my-2"><a href="insert_product.php" class="nav-link">Insert Products</a></button>
         <button class="p-2 my-2"><a href="" class="nav-link">View Products</a></button>
         <button class="p-2 my-2"><a href="admin_index.php?insert_categories" class="nav-link">Insert Catagories</a></button>
         <button class="p-2 my-2"><a href="" class="nav-link">View Catagories</a></button>
