@@ -2,6 +2,11 @@
 git commit -m "string"
 git push -->
 
+<?php
+include("connection.php");
+include("common_function.php");
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,58 +21,83 @@ git push -->
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Zest Mart</title>
+    <title>Registration</title>
     
 </head>
 
 <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
-        <div class="container">
-            <a class="navbar-brand " href="#"><img src="./image/logo/zestmart-logo.png" height="80rem"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                    </li>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand " href="#"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
+          </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="shop.html">Shop</a>
-                    </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="shop.php">Shop</a>
+          </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="blog.html">Blog</a>
-                    </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="blog.php">Blog</a>
+          </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">About</a>
-                    </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Brand
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getbrands();
+            ?>
+            
+          </ul>
+        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#"><i class="fa-solid fa-magnifying-glass"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="cart.html">
-                            <i class="fa-solid fa-bag-shopping"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="login.html">
-                          <i class="fa-solid fa-user fa-beat fa-lg"></i></a>
-                      </li>
+          
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getcategories();
 
+            ?>
+            
+          </ul>
+        </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="cart.php">
+              <i class="fa-solid fa-bag-shopping"></i><sup>1</sup></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.php">
+              Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link reg_nav pb-1 my-1 active" aria-current="page" href="registration.php">
+              Register</a>
+          </li>
+          <li class="nav-item">
+            <form class="nav-link d-flex " role="search">
+        <input class="m-2 py-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-dark " type="submit">Search</button>
+      </form>
+          </li>
+          
 
-            </div>
-        </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
+
 
     <section id="login">
         <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -76,45 +106,34 @@ git push -->
                 <div class="featured-image mb-3">
                     <img src="./image/login/1.png" class="img-fluid" alt="">
                 </div>
-                <p class=" fs-2 fw-bold">Be Verified</p>
-                <small class=" text-wrap text-center">For Better Experience</small>
+                <p class=" fs-2 fw-bold">Get Registered</p>
+                <small class=" text-wrap text-center">Unlock new features and get access to exclusive deals</small>
             </div>
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
-                        <h3>Hello there,</h3>
-                        <p>Enter your email and password to login.</p>
-                    </div>
-                    <form action="" method="post">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address" name="" id="">
-                        </div>
-                        <div class="input-group mb-1">
-                            <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" name="" id="">
-                        </div>
-                        <!-- <div class="input-group mb-5 d-flex justify-content-between">
-                        <div class="form-check ">
-                            <input type="checkbox" class="form-check-input" name="" id="formCheck">
-                            <label for="formCheck"  class="form-check-label text-secondary"><small>Remember Me</small></label>
-                        </div>
-                        <div class="forget">
-                            <small>
-                                <a href="">Forgot Password?</a>
-                            </small>
-                        </div>
-                    </div> -->
-                    <div class="input-group mt-3 mb-5">
-                        <button class=" w-100 text-uppercase ">Login </button>
+                        <h3>Welcome,</h3>
+                        <p>Please enter your email and password.</p>
                     </div>
                     <div class="input-group mb-3">
-                        <button class="sign-btn text-bg-light w-100  "><img class="google me-3" src="./image/login/google.png" alt=""><small class="text-dark fw-normal">Sign in with Google</small></button>
+                        <input type="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address" name="" id="">
                     </div>
-                    </form>
+                    <div class="input-group mb-1">
+                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" name="" id="">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password" name="" id="">
+                    </div>
                     
-                    
+                    <div class="input-group mb-3">
+                        <button class=" w-100 text-uppercase ">Register</button> </button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="sign-btn text-bg-light w-100  "><img class="google me-3" src="./image/login/google.png" alt=""><small class="text-dark fw-normal">Sign up with Google</small></button>
+                    </div>
                     <div class="row">
                         <small>
-                            Don't have account? <a href="registration.html">Register</a>
+                            Already have an account? <a href="login.html">Log in</a>
                         </small>
                     </div>
 

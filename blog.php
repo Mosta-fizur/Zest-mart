@@ -1,6 +1,10 @@
 <!-- git add .
 git commit -m "string"
 git push -->
+<?php
+include("connection.php");
+include("common_function.php");
+?>
 
 
 <!DOCTYPE html>
@@ -16,14 +20,14 @@ git push -->
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>Zest Mart</title>
+  <title>Blogs</title>
 </head>
 
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand " href="#"><img src="./image/logo/zestmart-logo.png" alt="" height="80rem"></a>
+      <a class="navbar-brand " href="#"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
@@ -31,41 +35,67 @@ git push -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="index.html">Home</a>
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="shop.html">Shop</a>
+            <a class="nav-link " aria-current="page" href="shop.php">Shop</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="blog.html">Blog</a>
+            <a class="nav-link active" aria-current="page" href="blog.php">Blog</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">About</a>
-          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Brand
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getbrands();
+            ?>
+            
+          </ul>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#"><i class="fa-solid fa-magnifying-glass"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="cart.html">
-              <i class="fa-solid fa-bag-shopping"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="login.html">
-              <i class="fa-solid fa-user fa-beat fa-lg"></i></a>
-          </li>
+          
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getcategories();
 
+            ?>
+            
+          </ul>
+        </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="cart.php">
+              <i class="fa-solid fa-bag-shopping"></i><sup>1</sup></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.php">
+              Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link reg_nav pb-1 my-1" aria-current="page" href="registration.php">
+              Register</a>
+          </li>
+          <li class="nav-item">
+            <form class="nav-link d-flex " role="search">
+        <input class="m-2 py-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-dark " type="submit">Search</button>
+      </form>
+          </li>
+          
 
       </div>
     </div>
   </nav>
+
 
   <section id="blog-home" class="pt-5 mt-5 container">
 

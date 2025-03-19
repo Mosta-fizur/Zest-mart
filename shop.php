@@ -66,7 +66,7 @@ include("common_function.php");
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="blog.html">Blog</a>
+            <a class="nav-link" aria-current="page" href="blog.php">Blog</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -96,15 +96,15 @@ include("common_function.php");
         </li>
           
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="cart.html">
+            <a class="nav-link " aria-current="page" href="cart.php">
               <i class="fa-solid fa-bag-shopping"></i><sup>1</sup></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.html">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.php">
               Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link reg_nav pb-1 my-1" aria-current="page" href="registration.html">
+            <a class="nav-link reg_nav pb-1 my-1" aria-current="page" href="registration.php">
               Register</a>
           </li>
           <li class="nav-item">

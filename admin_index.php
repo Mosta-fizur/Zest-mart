@@ -103,7 +103,7 @@ include("common_function.php");
 
 <div class="container text-center mt-5 py-3">
       <h3>
-        Welcome Guest
+        Welcome Admin
       </h3>
       <hr class="mx-auto">
       <p>Manage Settings</p>
@@ -116,7 +116,7 @@ include("common_function.php");
           <p class="text-center">Admin Name</p>
         </div>
         <div class="button text-center ">
-        <button class="p-2 my-2"><a href="insert_product.php" class="nav-link">Insert Products</a></button>
+        <button class="p-2 my-2"><a href="admin_index.php?insert_products" class="nav-link">Insert Products</a></button>
         <button class="p-2 my-2"><a href="" class="nav-link">View Products</a></button>
         <button class="p-2 my-2"><a href="admin_index.php?insert_categories" class="nav-link">Insert Catagories</a></button>
         <button class="p-2 my-2"><a href="" class="nav-link">View Catagories</a></button>
@@ -139,6 +139,9 @@ include("common_function.php");
       }
       if(isset($_GET["insert_brands"])){
         include("insert_brand.php");
+      }
+      if(isset($_GET["insert_products"])){
+        include("insert_produc.php");
       }
       ?>
     </div>
