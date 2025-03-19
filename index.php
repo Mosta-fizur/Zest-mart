@@ -2,6 +2,11 @@
 git commit -m "string"
 git push -->
 
+<?php
+include("connection.php");
+include("common_function.php");
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +20,7 @@ git push -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
   <title>Zest Mart</title>
 </head>
@@ -35,20 +41,38 @@ git push -->
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="shop.html">Shop</a>
+            <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="blog.html">Blog</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">About</a>
-          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Brand
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getbrands();
+            ?>
+            
+          </ul>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">Contact Us</a>
-          </li>
+          
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getcategories();
+
+            ?>
+            
+          </ul>
+        </li>
           
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="cart.html">
@@ -135,13 +159,13 @@ git push -->
     <div class="row mx-auto container-fluid">
       <div class="product text-center col-lg-3 col-md-4 col-12">
         <img class="img-fluid mb-3" src="./image/featured/1.jpg" alt="">
-        <div class="star">
+        <!-- <div class="star">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
-        </div>
+        </div> -->
         <h5 class="p-name">
           Sports Boots
         </h5>
@@ -149,6 +173,7 @@ git push -->
           4500 Taka
         </h4>
         <a href=""><button class="buy-btn">Buy Now</button></a>
+       
         
       </div>
       <div class="product text-center col-lg-3 col-md-4 col-12">

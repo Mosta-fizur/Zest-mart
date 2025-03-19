@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+include("common_function.php");
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +38,11 @@ include("connection.php");
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="shop.html">Shop</a>
+            <a class="nav-link " aria-current="page" href="shop.php">Shop</a>
           </li>
 
           <li class="nav-item">
@@ -54,16 +55,7 @@ include("connection.php");
           </a>
           <ul class="dropdown-menu">
             <?php
-              $select_brands = "Select * from `brands`";
-              $result_brands = mysqli_query($conn, $select_brands);
-              // $row_data = mysqli_fetch_assoc($result_brands);
-              // echo"".$row_data["brand_title"];
-while($row_data = mysqli_fetch_assoc($result_brands)) {
-  $brand_title = $row_data["brand_title"];
-  $brand_id = $row_data["brand_id"];
-  echo '<li class= ""><a class="dropdown-item" href="">' .$brand_title.'</a>';
-  
-}
+            getbrands();
             ?>
             
           </ul>
@@ -76,15 +68,8 @@ while($row_data = mysqli_fetch_assoc($result_brands)) {
           </a>
           <ul class="dropdown-menu">
             <?php
-              $select_categories = "Select * from `categories`";
-              $result_categories = mysqli_query($conn, $select_categories);
-              
-while($row_data = mysqli_fetch_assoc($result_categories)) {
-  $category_title = $row_data["category_title"];
-  $category_id = $row_data["category_id"];
-  echo '<li class= ""><a class="dropdown-item" href="">' .$category_title.'</a>';
-  
-}
+            getcategories();
+
             ?>
             
           </ul>
