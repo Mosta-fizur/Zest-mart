@@ -51,7 +51,8 @@ move_uploaded_file($temp_image3, "./product_images/$product_image3");
 <body class="bg-light">
     <div class="container mt-3">
         <h1 class="text-center">Insert Products</h1>
-        <form action="" method="post" enctype="multipart/form-data">
+        <!-- to insert image -->
+        <form action="" method="post" enctype="multipart/form-data"> 
             <!-- title -->
             <div class=" form-outline mb-4 w-50 m-auto">
                 <label for="product_title" class=" form-label"   >Product Title:</label>
@@ -62,14 +63,17 @@ move_uploaded_file($temp_image3, "./product_images/$product_image3");
                 <label for="product_description" class=" form-label"   >Product Description:</label>
                 <input type="text" name="product_description" id="product_description" class=" form-control" placeholder="Enter Product Description" autocomplete="off" required="required">
             </div>
+            <!-- keyword -->
             <div class=" form-outline mb-4 w-50 m-auto">
                 <label for="product_keywords" class=" form-label"   >Product Keywords:</label>
                 <input type="text" name="product_keywords" id="product_keywords" class=" form-control" placeholder="Enter Product Keywords" autocomplete="off" required="required">
             </div>
+            <!-- product category -->
             <div class=" form-outline mb-4 w-50 m-auto">
                 <select name="product_category" class=" form-select" id="">
                     <option class="" value="">Select a Category</option>
                     <?php
+                    // dynamic category
 $select_querry = "Select * from `categories`";
 $result_querry = mysqli_query($conn,$select_querry);
 while($row = mysqli_fetch_assoc($result_querry)) {
@@ -82,6 +86,7 @@ while($row = mysqli_fetch_assoc($result_querry)) {
 
                 </select>
             </div>
+            <!-- brands -->
             <div class=" form-outline mb-4 w-50 m-auto">
                 <select name="product_brands" class=" form-select" id="">
                     <option class="" value="">Select a Brand</option>
@@ -99,7 +104,7 @@ while($row = mysqli_fetch_assoc($result_querry)) {
 
                 </select>
             </div>
-
+<!-- image -->
 
             <div class=" form-outline mb-4 w-50 m-auto">
                 <label for="product_image1" class=" form-label"   >Image 1:</label>
@@ -113,7 +118,7 @@ while($row = mysqli_fetch_assoc($result_querry)) {
                 <label for="product_image3" class=" form-label"   >Image 3:</label>
                 <input type="file" name="product_image3" id="product_image3" class=" form-control" required="required">
             </div>
-
+<!-- price -->
             <div class=" form-outline mb-4 w-50 m-auto">
                 <label for="product_price" class=" form-label"   >Product Price:</label>
                 <input type="text" name="product_price" id="product_price" class=" form-control" placeholder="Enter Product Price" autocomplete="off" required="required">

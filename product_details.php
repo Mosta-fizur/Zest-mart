@@ -1,7 +1,12 @@
+<!-- git add .
+git commit -m "string"
+git push -->
+
 <?php
 include("connection.php");
 include("common_function.php");
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,14 +21,29 @@ include("common_function.php");
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-      .admin_image{
-    object-fit: contain;
-    width: 100px;
-}
-    </style>
+  <style>
+    .product img {
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      object-fit: cover;
+    }
 
-  <title>Admin Dashboard</title>
+    #featured>div:nth-child(8)>nav>ul>li.page-item.active>a {
+      background-color: black;
+    }
+
+    #featured>div:nth-child(8)>nav>ul>li:nth-child(n):hover>a {
+      background-color: coral;
+      color: white;
+    }
+
+    .pagination a {
+      color: #000;
+    }
+  </style>
+
+  <title>Zest Mart</title>
 </head>
 
 <body>
@@ -42,7 +62,7 @@ include("common_function.php");
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="shop.php">Shop</a>
+            <a class="nav-link active" aria-current="page" href="shop.php">Shop</a>
           </li>
 
           <li class="nav-item">
@@ -88,9 +108,10 @@ include("common_function.php");
               Register</a>
           </li>
           <li class="nav-item">
-            <form class="nav-link d-flex " role="search">
-        <input class="m-2 py-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search">
-        <input class="btn btn-dark " value="Search" type="submit">Search</input>
+            <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
+        <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+        <!-- <button class="btn btn-dark " type="submit">Search</button> -->
+         <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
       </form>
           </li>
           
@@ -99,59 +120,33 @@ include("common_function.php");
     </div>
   </nav>
 
-<section id="welcome" class="my-5 py-5">
-
-<div class="container text-center mt-5 py-3">
-      <h3>
-        Welcome Guest
-      </h3>
-      <hr class="mx-auto">
-      <p>Manage Settings</p>
+  <section id="featured" class="my-5 py-5">
+    <div class="container mt-5 py-5">
+      
+      <hr>
+      <p>Here you can check out our new and featured products with fair price on Zest Mart.</p>
     </div>
-    <div class="bg-body-tertiary container shadow">
-      <div class="row ">
-      <div class="col-md-12 my-2 d-flex align-items-center">
-        <div class="px-5">
-          <a href=""><img class="admin_image pe-2" src="./image/clothes/cloth1.jpg" alt=""></a>
-          <p class="text-center">Admin Name</p>
-        </div>
-        <div class="button text-center ">
-        <button class="p-2 my-2"><a href="admin_index.php?insert_products" class="nav-link">Insert Products</a></button>
-        <button class="p-2 my-2"><a href="" class="nav-link">View Products</a></button>
-        <button class="p-2 my-2"><a href="admin_index.php?insert_categories" class="nav-link">Insert Catagories</a></button>
-        <button class="p-2 my-2"><a href="" class="nav-link">View Catagories</a></button>
-        <button class="p-2 my-2"><a href="admin_index.php?insert_brands" class="nav-link">Insert Brands</a></button>
-        <button class="p-2 my-2"><a href="" class="nav-link ">View Brands</a></button>
-        <button class="p-2 my-2"><a href="" class="nav-link ">All Orders</a></button>
-        <button class="p-2 my-2"><a href="" class="nav-link ">All Payments</a></button>
-        <button class="p-2 my-2"><a href="" class="nav-link ">List of Users</a></button>
-        <button class="p-2 my-2"><a href="" class="nav-link ">Log Out</a></button>
-        </div>
+    <div class="row mx-auto container" >
+    <!-- onclick="window.location.href= 'singleProduct.html';" -->
 
 
-      </div>
-    </div></div>
 
-    <div class="container my-5">
-      <?php
-      if(isset($_GET["insert_categories"])){
-        include("insert_category.php");
-      }
-      if(isset($_GET["insert_brands"])){
-        include("insert_brand.php");
-      }
-      if(isset($_GET["insert_products"])){
-        include("insert_product.php");
-      }
-      ?>
+<!-- fetching products -->
+<?php
+view_details() ;
+get_unique_categories();
+get_unique_brands();
+
+?>
     </div>
 
 
-    
-</section>
-   
-<!-- footer -->
-<footer class="mt-5 py-5">
+  </section>
+
+
+
+
+  <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">
       <div class="footer-one col-lg-3 col-md-3 col-12">
         <img src="./image/logo/O-removebg-preview.png" alt="">
@@ -161,7 +156,7 @@ include("common_function.php");
       </div>
       <div class="footer-one col-lg-3 col-md-3 col-12 mb-3">
         <h5 class="
-            pb-2">Featured</h5>
+        pb-2">Featured</h5>
         <ul class="text-uppercase list-unstyled">
           <li><a class="text-decoration-none" href="#">Men</a></li>
           <li><a class="text-decoration-none" href="#">Women</a></li>
@@ -174,7 +169,7 @@ include("common_function.php");
       </div>
       <div class="footer-one col-lg-3 col-md-3 col-12 mb-3">
         <h5 class="
-            pb-2">Contact Us</h5>
+        pb-2">Contact Us</h5>
         <div>
           <h6 class="text-uppercase">
             Address
@@ -196,7 +191,7 @@ include("common_function.php");
       </div>
       <div class="footer-one col-lg-3 col-md-3 col-12">
         <h5 class="
-            pb-2">Instagram</h5>
+        pb-2">Instagram</h5>
         <div class="row ">
           <img class="img-fluid w-25 h-100 m-2" src="./image/insta/2.jpg" alt="">
           <img class="img-fluid w-25 h-100 m-2" src="./image/insta/1.jpg" alt="">
@@ -232,7 +227,6 @@ include("common_function.php");
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script src="script.js"></script>
 </body>
 
 </html>

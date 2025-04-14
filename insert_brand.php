@@ -28,7 +28,7 @@ if (isset($_POST['insert_brand'])) {
 </div>
 <div class="input-group mb-2 w-10 d-flex justify-content-center">
   
-<input type="submit" class=" bg-dark text-light p-2 border-0 my-3" name="insert_brand" value="Insert Brands" placeholder="Insert Catergories" aria-label="Username" aria-describedby="basic-addon1">
+<input type="submit" class=" bg-dark text-light p-2 border-0 my-3" name="insert_brand" value="Insert Brands" placeholder="Insert Brands" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
 </form>

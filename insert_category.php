@@ -3,7 +3,7 @@ include("connection.php");
 
 if (isset($_POST['insert_cat'])) {
     $category_title = $_POST['cat_title'];
-
+// check if its the same
     $select_querry = "Select * from `categories` where category_title= '$category_title'";
     $result_select = mysqli_query($conn, $select_querry);
     $number = mysqli_num_rows($result_select);

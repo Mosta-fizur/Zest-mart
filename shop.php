@@ -65,9 +65,9 @@ include("common_function.php");
             <a class="nav-link active" aria-current="page" href="shop.php">Shop</a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" aria-current="page" href="blog.html">Blog</a>
-          </li>
+          </li> -->
 
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -96,21 +96,35 @@ include("common_function.php");
         </li>
           
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="cart.html">
-              <i class="fa-solid fa-bag-shopping"></i><sup>1</sup></a>
+            <a class="nav-link " aria-current="page" href="cart.php">
+              <i class="fa-solid fa-bag-shopping"></i><sup>
+                <?php 
+                cart_item(); 
+                ?>
+                </sup></a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="">Total Price: <?php
+            total_cart_price();
+  
+            ?>
+            </a>
+          </li>
+          
           <li class="nav-item">
             <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.html">
               Login</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link reg_nav pb-1 my-1" aria-current="page" href="registration.html">
               Register</a>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <form class="nav-link d-flex " role="search">
-        <input class="m-2 py-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-dark " type="submit">Search</button>
+            <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
+        <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+        <!-- <button class="btn btn-dark " type="submit">Search</button> -->
+         <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
       </form>
           </li>
           
@@ -118,6 +132,10 @@ include("common_function.php");
       </div>
     </div>
   </nav>
+
+  <?php
+  cart();
+  ?>
 
   <section id="featured" class="my-5 py-5">
     <div class="container mt-5 py-5">
@@ -127,454 +145,23 @@ include("common_function.php");
       <hr>
       <p>Here you can check out our new and featured products with fair price on Zest Mart.</p>
     </div>
-    <div class="row mx-auto container" onclick="window.location.href= 'singleProduct.html';">
+    <div class="row mx-auto container" >
+    <!-- onclick="window.location.href= 'singleProduct.html';" -->
+
 <!-- fetching products -->
 <?php
 getproducts() ;
+get_unique_categories();
+get_unique_brands();
+getIPAddress();
+// $ip = getIPAddress();  
+// echo 'User Real IP Address - '.$ip;  
+
 
 ?>
     </div>
-
-    <!-- <div class="row mx-auto container">
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/1.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/2.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/3.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Classy Black Bag
-        </h5>
-        <h4>
-          2500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/4.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Knee Cap
-        </h5>
-        <h4>
-          1000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="row mx-auto container">
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/5.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/6.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/7.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Classy Black Bag
-        </h5>
-        <h4>
-          2500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/8.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Knee Cap
-        </h5>
-        <h4>
-          1000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="row mx-auto container">
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/9.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/10.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/11.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Classy Black Bag
-        </h5>
-        <h4>
-          2500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/12.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Knee Cap
-        </h5>
-        <h4>
-          1000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="row mx-auto container">
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/13.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/14.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/15.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Classy Black Bag
-        </h5>
-        <h4>
-          2500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/16.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Knee Cap
-        </h5>
-        <h4>
-          1000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="row mx-auto container">
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/17.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/18.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/19.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Classy Black Bag
-        </h5>
-        <h4>
-          2500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/shop/20.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Knee Cap
-        </h5>
-        <h4>
-          1000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="row mx-auto container">
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/1.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/2.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/3.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Classy Black Bag
-        </h5>
-        <h4>
-          2500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/4.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Knee Cap
-        </h5>
-        <h4>
-          1000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <nav aria-label="...">
-        <ul class="pagination mt-5">
-          <li class="page-item disabled">
-            <a class="page-link">Previous</a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item" aria-current="page">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div> -->
+      
+      
   </section>
 
 

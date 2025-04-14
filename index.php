@@ -37,11 +37,11 @@ include("common_function.php");
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
+            <a class="nav-link active" aria-current="page" href="shop.php">Shop</a>
           </li>
 
           <li class="nav-item">
@@ -87,9 +87,10 @@ include("common_function.php");
               Register</a>
           </li>
           <li class="nav-item">
-            <form class="nav-link d-flex " role="search">
-        <input class="m-2 py-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-dark " type="submit">Search</button>
+            <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
+        <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+        <!-- <button class="btn btn-dark " type="submit">Search</button> -->
+         <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
       </form>
           </li>
           
@@ -97,6 +98,10 @@ include("common_function.php");
       </div>
     </div>
   </nav>
+  <?php
+  cart();
+  ?>
+
 
   <section id="home">
 
