@@ -316,10 +316,10 @@ include("common_function.php");
                         <h6>Total</h6>
                         <p><?php echo $total_price ?></p>
                     </div>
-                    <div class='d-flex justify-content-between m-3'>
-                    <input type='submit' value='Continue Shopping' class='me-auto bg-black text-white px-2' name='continue_shopping'>
+                    <div class='d-flex justify-content-between m-3 p-2'>
+                    <input type='submit' value='Continue Shopping' class='fw-bold me-auto bg-black mx-2 text-white ps-2 pe-2 my-2 me-2' name='continue_shopping'>
                         
-                        <a href='#'><button class='ms-auto bg-success'>Proceed to Checkout</button></a>
+                        <button  class=' ms-auto bg-success mt-2 mb-2 ms-2'><a href='checkout.php' class='text-decoration-none text-white'>Proceed to Checkout</a></button>
                     </div>
                     ";
                      }

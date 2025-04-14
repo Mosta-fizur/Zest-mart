@@ -4,7 +4,7 @@ git push -->
 
 <?php
 include("connection.php");
-include("common_function.php");
+
 ?>
 
 
@@ -65,55 +65,16 @@ include("common_function.php");
             <a class="nav-link active" aria-current="page" href="shop.php">Shop</a>
           </li>
 
-          <!-- <li class="nav-item">
+       
+          <li class="nav-item">
             <a class="nav-link" aria-current="page" href="blog.html">Blog</a>
-          </li> -->
-
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Brand
-          </a>
-          <ul class="dropdown-menu">
-            <?php
-            getbrands();
-            ?>
-            
-          </ul>
-        </li>
-
-          
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Category
-          </a>
-          <ul class="dropdown-menu">
-            <?php
-            getcategories();
-
-            ?>
-            
-          </ul>
-        </li>
-          
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="cart.php">
-              <i class="fa-solid fa-bag-shopping"></i><sup>
-                <?php 
-                cart_item(); 
-                ?>
-                </sup></a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="">Total Price: <?php
-            total_cart_price();
-  
-            ?>
-            </a>
           </li>
           
+          
+
+          
           <li class="nav-item">
-            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_login.php">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.html">
               Login</a>
           </li>
           <!-- <li class="nav-item">
@@ -133,32 +94,35 @@ include("common_function.php");
     </div>
   </nav>
 
-  <?php
-  cart();
-  ?>
 
-  <section id="featured" class="my-5 py-5">
-    <div class="container mt-5 py-5">
-      <h2 class="fw-bold">
-        Our Featured Products
+
+  <section id="featured" class="mt-5 py-5 ">
+    <div class="container ">
+      <!-- <h2 class="fw-bold">
+        Checkout Page
       </h2>
-      <hr>
-      <p>Here you can check out our new and featured products with fair price on Zest Mart.</p>
+      <hr> -->
+      <!-- <p>Here you can check out our new and featured products with fair price on Zest Mart.</p> -->
+       <div class="row px-1">
+        <div class="col-md-12">
+            <div class="row">
+                <?php
+                if(!isset($_SESSION['username'])){
+                    include('user_login.php');
+                }else{
+                    include('payment.php');
+                }
+
+                ?>
+            </div>
+        </div>
+        
+       </div>
     </div>
     <div class="row mx-auto container" >
-    <!-- onclick="window.location.href= 'singleProduct.html';" -->
 
-<!-- fetching products -->
-<?php
-getproducts() ;
-get_unique_categories();
-get_unique_brands();
-getIPAddress();
-// $ip = getIPAddress();  
-// echo 'User Real IP Address - '.$ip;  
+    
 
-
-?>
     </div>
       
       
