@@ -23,45 +23,86 @@ git push -->
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand " href="#"><img src="./image/logo/zestmart-logo.png" alt="" height="80rem"></a>
+      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
+          <!-- home -->
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="index.html">Home</a>
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
+          </li>
+<!-- shop   -->
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
 
+          <!-- blog -->
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="shop.html">Shop</a>
+            <a class="nav-link active" aria-current="page" href="blog.php">Blog</a>
           </li>
+          
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="blog.html">Blog</a>
-          </li>
+         <!-- brand -->
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">About</a>
-          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Brand
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getbrands();
+            ?>
+            
+          </ul>
+        </li>
+<!-- category -->
+          
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+          </a>
+          <ul class="dropdown-menu">
+            <?php
+            getcategories();
 
+            ?>
+            
+          </ul>
+        </li>
+          <!-- cart -->
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">Contact Us</a>
+            <a class="nav-link " aria-current="page" href="cart.php">
+              <i class="fa-solid fa-bag-shopping"></i><sup>
+                <?php 
+                cart_item(); 
+                ?>
+                </sup></a>
           </li>
+<!-- total -->
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#"><i class="fa-solid fa-magnifying-glass"></i>
+            <a class="nav-link" aria-current="page" href="">Total Price: <?php
+            total_cart_price();
+  
+            ?>
             </a>
           </li>
+          <!-- login -->
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="cart.html">
-              <i class="fa-solid fa-bag-shopping"></i></a>
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_login.php">
+              Login</a>
           </li>
+          <!-- search -->
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="login.html">
-              <i class="fa-solid fa-user fa-beat fa-lg"></i></a>
+            <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
+        <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+        
+         <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
+      </form>
           </li>
-
+          
 
       </div>
     </div>

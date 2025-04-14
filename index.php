@@ -21,6 +21,27 @@ include("common_function.php");
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <style>
+    .product img {
+      width: 100%;
+      height: auto;
+      box-sizing: border-box;
+      object-fit: cover;
+    }
+
+    #featured>div:nth-child(8)>nav>ul>li.page-item.active>a {
+      background-color: black;
+    }
+
+    #featured>div:nth-child(8)>nav>ul>li:nth-child(n):hover>a {
+      background-color: coral;
+      color: white;
+    }
+
+    .pagination a {
+      color: #000;
+    }
+  </style>
 
   <title>Zest Mart</title>
 </head>
@@ -29,24 +50,23 @@ include("common_function.php");
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand " href="#"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
+      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
+          <!-- home -->
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          </li>
+<!-- shop   -->
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="shop.php">Shop</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="blog.html">Blog</a>
-          </li>
+         <!-- brand -->
 
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,7 +79,7 @@ include("common_function.php");
             
           </ul>
         </li>
-
+<!-- category -->
           
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,23 +93,33 @@ include("common_function.php");
             
           </ul>
         </li>
-          
+          <!-- cart -->
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="cart.html">
-              <i class="fa-solid fa-bag-shopping"></i><sup>1</sup></a>
+            <a class="nav-link " aria-current="page" href="cart.php">
+              <i class="fa-solid fa-bag-shopping"></i><sup>
+                <?php 
+                cart_item(); 
+                ?>
+                </sup></a>
           </li>
+<!-- total -->
           <li class="nav-item">
-            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.html">
+            <a class="nav-link" aria-current="page" href="">Total Price: <?php
+            total_cart_price();
+  
+            ?>
+            </a>
+          </li>
+          <!-- login -->
+          <li class="nav-item">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_login.php">
               Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link reg_nav pb-1 my-1" aria-current="page" href="registration.html">
-              Register</a>
-          </li>
+          <!-- search -->
           <li class="nav-item">
             <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
         <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        <!-- <button class="btn btn-dark " type="submit">Search</button> -->
+        
          <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
       </form>
           </li>

@@ -50,7 +50,7 @@ include("connection.php");
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand " href="#"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
+      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
@@ -67,20 +67,17 @@ include("connection.php");
 
        
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="blog.html">Blog</a>
+            <a class="nav-link " aria-current="page" href="blog.php">Blog</a>
           </li>
           
           
 
           
           <li class="nav-item">
-            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="login.html">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_login.php">
               Login</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link reg_nav pb-1 my-1" aria-current="page" href="registration.html">
-              Register</a>
-          </li> -->
+         
           <li class="nav-item">
             <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
         <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
