@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2025 at 08:46 PM
+-- Generation Time: Apr 15, 2025 at 01:12 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -58,15 +58,6 @@ CREATE TABLE `cart_details` (
   `quantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cart_details`
---
-
-INSERT INTO `cart_details` (`product_id`, `ip_address`, `quantity`) VALUES
-(1, '::1', 0),
-(6, '::1', 0),
-(9, '::1', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -87,6 +78,30 @@ INSERT INTO `categories` (`category_id`, `category_title`) VALUES
 (2, 'Jeans'),
 (3, 'T-shirt'),
 (4, 'Watch');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders_pending`
+--
+
+CREATE TABLE `orders_pending` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `invoice_number` int(255) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(255) NOT NULL,
+  `order_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders_pending`
+--
+
+INSERT INTO `orders_pending` (`order_id`, `user_id`, `invoice_number`, `product_id`, `quantity`, `order_status`) VALUES
+(1, 1, 293082342, 9, 1, 'pending'),
+(2, 1, 1379460091, 7, 1, 'pending'),
+(3, 1, 245960719, 8, 1, 'pending');
 
 -- --------------------------------------------------------
 
@@ -124,6 +139,38 @@ INSERT INTO `products` (`product_id`, `product_title`, `product_description`, `p
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_orders`
+--
+
+CREATE TABLE `user_orders` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `amount_due` int(255) NOT NULL,
+  `invoice_number` int(255) NOT NULL,
+  `total_products` int(255) NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `order_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_orders`
+--
+
+INSERT INTO `user_orders` (`order_id`, `user_id`, `amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`) VALUES
+(1, 1, 17500, 293082342, 1, '2025-04-15 08:13:07', 'pending'),
+(2, 1, 12500, 1379460091, 1, '2025-04-15 08:19:24', 'pending'),
+(3, 1, 15000, 245960719, 1, '2025-04-15 08:24:49', 'pending'),
+(4, 1, 0, 771020034, 0, '2025-04-15 08:36:31', 'pending'),
+(5, 1, 0, 1108456960, 0, '2025-04-15 09:52:12', 'pending'),
+(6, 1, 0, 1965169713, 0, '2025-04-15 09:56:17', 'pending'),
+(7, 1, 0, 1412000988, 0, '2025-04-15 09:58:45', 'pending'),
+(8, 1, 0, 1124580571, 0, '2025-04-15 10:02:48', 'pending'),
+(9, 1, 0, 1154391417, 0, '2025-04-15 10:29:26', 'pending'),
+(10, 1, 0, 39765270, 0, '2025-04-15 11:07:01', 'pending');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_table`
 --
 
@@ -143,7 +190,10 @@ CREATE TABLE `user_table` (
 --
 
 INSERT INTO `user_table` (`user_id`, `username`, `user_email`, `user_password`, `user_image`, `user_ip`, `user_address`, `user_mobile`) VALUES
-(1, 'mosta', ' mosta@g.com', '$2y$10$JW9.mTGxakYl4L7H58B1UeEEdWmH79zDd4uqVlwWKLy/ArLgi7PzG', ' 2.jpg', '::1', ' faka', '1232132123');
+(1, 'mosta', ' mosta@g.com', '$2y$10$JW9.mTGxakYl4L7H58B1UeEEdWmH79zDd4uqVlwWKLy/ArLgi7PzG', ' 2.jpg', '::1', ' faka', '1232132123'),
+(2, 'rfd', ' dfd@sd', '$2y$10$Pv/bjCObizsyC.HFoFq0/uVn2c7HxDSqOwgRYCorfpdxzaXVW08Ce', ' 3.jpg', '::1', ' zsgzs', '3422224'),
+(3, 'mahin', ' mah@gm.com', '$2y$10$oo9o/QSTiUtAe6gDSI4IueCrOwxE/y3Fc5JPvVcA9kK6oDj7oaPn.', ' 2.webp', '::1', ' sdfs', '32432432'),
+(4, 'sal', 'sas@dsd', '$2y$10$iYSEjagWuxMXbS.D9OOm9ewewJiN9/nx4.DgzjeDWc5xFuzRXd7YC', 'sal.jpg', '::1', ' sad', '234242');
 
 --
 -- Indexes for dumped tables
@@ -168,10 +218,22 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `orders_pending`
+--
+ALTER TABLE `orders_pending`
+  ADD PRIMARY KEY (`order_id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `user_orders`
+--
+ALTER TABLE `user_orders`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `user_table`
@@ -196,16 +258,28 @@ ALTER TABLE `categories`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `orders_pending`
+--
+ALTER TABLE `orders_pending`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `user_orders`
+--
+ALTER TABLE `user_orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `user_table`
 --
 ALTER TABLE `user_table`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

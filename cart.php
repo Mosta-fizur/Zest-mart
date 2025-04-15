@@ -6,6 +6,8 @@ git push -->
 include("connection.php");
 include("common_function.php");
 
+session_start();
+
 ?>
 
 
@@ -42,6 +44,13 @@ include("common_function.php");
     .pagination a {
       color: #000;
     }
+    .navbar.bg-body-tertiary {
+  z-index: 1030;
+}
+
+.navbar.bg-dark {
+  z-index: 1020;
+}
   </style>
 
   <title>Cart Details</title>
@@ -108,11 +117,11 @@ include("common_function.php");
                     </sup></a>
               </li>
 
-                 <!-- login -->
-              <li class="nav-item">
-                <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_login.php">
-                  Login</a>
-              </li>
+                 <!-- register -->
+          <li class="nav-item">
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_registration.php">
+              Register</a>
+          </li>
               
               
     
@@ -125,10 +134,40 @@ include("common_function.php");
       getIPAddress();
 
       ?>
+      <!-- second nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="top: 100px;">
+  <div class="container">
+    <ul class="navbar-nav me-auto">
+    <?php
+
+if(!isset($_SESSION['username'])){
+  echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome Guest</a>
+      </li>";
+}else{
+  echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome ".$_SESSION['username']."</a>
+      </li>";
+}
+
+      if(!isset($_SESSION['username'])){
+        echo "<li class='nav-item'>
+        <a class='nav-link ' href='user_login.php'>Login</a>
+      </li>";
+      }else{
+        echo "<li class='nav-item'>
+        <a class='nav-link ' href='logout.php'>Logout</a>
+      </li>";
+      }
+
+      ?>
+    </ul>
+  </div>
+</nav>
     <section id="blog-home" class="pt-5 mt-5 container">
 
 
-        <h2 class="fw-bold pt-5">Shopping Cart</h2>
+        <h2 class="fw-bold pt-5 mt-5">Shopping Cart</h2>
         <hr class="">
 
 
@@ -184,7 +223,7 @@ include("common_function.php");
                  global $conn;
                  $get_ip_add = getIPAddress();
                  $total_price = 0;
-                 $cart_query = "Select * from `cart_details` where ip_address='$get_ip_add'";
+                 $cart_query = "Select * from cart_details where ip_address='$get_ip_add'";
                  $result = mysqli_query($conn, $cart_query);
                  $result_count = mysqli_num_rows($result);
                  if ($result_count > 0) {
@@ -204,7 +243,7 @@ include("common_function.php");
 
                  while( $row = mysqli_fetch_array($result) ) {
                    $product_id = $row['product_id'];
-                   $select_products = "Select * from `products` where product_id='$product_id'";
+                   $select_products = "Select * from products where product_id='$product_id'";
                    $result_products = mysqli_query($conn, $select_products); // executeq
                    while($row_product_price = mysqli_fetch_array($result_products)) {
                      $product_price = array($row_product_price['product_price']);
@@ -228,7 +267,7 @@ include("common_function.php");
                     <?php  $get_ip_add = getIPAddress();
                     if(isset($_POST['update_cart'])){
                         $quantities = $_POST['qty'];
-                        $update_cart = "update `cart_details` set quantity= '$quantities' where ip_address='$get_ip_add'";
+                        $update_cart = "update cart_details set quantity= '$quantities' where ip_address='$get_ip_add'";
                         $result_products_quantity = mysqli_query($conn, $update_cart); // executeq
                         $total_price = $total_price * $quantities;
                     }
@@ -270,7 +309,7 @@ include("common_function.php");
         <?php
                      $get_ip_add = getIPAddress();
                      $total_price = 0;
-                     $cart_query = "Select * from `cart_details` where ip_address='$get_ip_add'";
+                     $cart_query = "Select * from cart_details where ip_address='$get_ip_add'";
                      $result = mysqli_query($conn, $cart_query);
                      $result_count = mysqli_num_rows($result);
                      if ($result_count > 0) {
@@ -291,7 +330,7 @@ include("common_function.php");
                     <h5>CART TOTAL</h5>
                     <div class='d-flex justify-content-between'>
                         <h6>Subtotal</h6>
-                        <p><?php echo $total_price ?></p>
+                        <p>" . $total_price . "</p>
                     </div>
                     <div class='d-flex justify-content-between'>
                         <h6>Shipping</h6>
@@ -301,7 +340,7 @@ include("common_function.php");
                     <hr class='second-hr'>
                     <div class='d-flex justify-content-between'>
                         <h6>Total</h6>
-                        <p><?php echo $total_price ?></p>
+                        <p>" . $total_price . "</p>
                     </div>
                     <div class='d-flex justify-content-between m-3 p-2'>
                     <input type='submit' value='Continue Shopping' class='fw-bold me-auto bg-black mx-2 text-white ps-2 pe-2 my-2 me-2' name='continue_shopping'>
@@ -329,7 +368,7 @@ include("common_function.php");
         if(isset($_POST['remove_cart'])){
             foreach($_POST['removeitem'] as $remove_id){
                 echo $remove_id;
-                $delete_query = "Delete from `cart_details` where product_id= '$remove_id'";
+                $delete_query = "Delete from cart_details where product_id= '$remove_id'";
                 $run_delete = mysqli_query($conn,$delete_query);
                 if($run_delete){
                     echo "<script>window.open('cart.php','_self')</script>";

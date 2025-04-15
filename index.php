@@ -5,6 +5,7 @@ git push -->
 <?php
 include("connection.php");
 include("common_function.php");
+session_start();
 ?>
 
 
@@ -41,6 +42,13 @@ include("common_function.php");
     .pagination a {
       color: #000;
     }
+    .navbar.bg-body-tertiary {
+  z-index: 1030;
+}
+
+.navbar.bg-dark {
+  z-index: 1020;
+}
   </style>
 
   <title>Zest Mart</title>
@@ -110,11 +118,21 @@ include("common_function.php");
             ?>
             </a>
           </li>
-          <!-- login -->
-          <li class="nav-item">
-            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_login.php">
-              Login</a>
-          </li>
+          <!-- register -->
+           <?php
+           if (isset($_SESSION['username'])){
+            echo "<li class='nav-item'>
+            <a class='nav-link log_nav pb-1 my-1 text-center' aria-current='page' href='profile.php'>
+              My account</a>
+          </li>";
+           }else{
+            echo "<li class='nav-item'>
+            <a class='nav-link log_nav pb-1 my-1' aria-current='page' href='user_registration.php'>
+              Register</a>
+          </li>";
+           }
+           ?>
+          
           <!-- search -->
           <li class="nav-item">
             <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
@@ -131,7 +149,38 @@ include("common_function.php");
   <?php
   cart();
   ?>
+  <!-- second nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="top: 100px;">
+  <div class="container">
+    <ul class="navbar-nav me-auto">
+      
+      
+      <?php
 
+if(!isset($_SESSION['username'])){
+  echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome Guest</a>
+      </li>";
+}else{
+  echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome ".$_SESSION['username']."</a>
+      </li>";
+}
+
+      if(!isset($_SESSION['username'])){
+        echo "<li class='nav-item'>
+        <a class='nav-link ' href='user_login.php'>Login</a>
+      </li>";
+      }else{
+        echo "<li class='nav-item'>
+        <a class='nav-link ' href='logout.php'>Logout</a>
+      </li>";
+      }
+
+      ?>
+    </ul>
+  </div>
+</nav>
 
   <section id="home">
 

@@ -2,6 +2,11 @@
 git commit -m "string"
 git push -->
 
+<?php
+include("connection.php");
+include("common_function.php");
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +20,16 @@ git push -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      .navbar.bg-body-tertiary {
+  z-index: 1030;
+}
+
+.navbar.bg-dark {
+  z-index: 1020;
+}
+    </style>
 
   <title>Zest Mart</title>
 </head>
@@ -39,11 +54,10 @@ git push -->
             <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
 
-          <!-- blog -->
+          <!-- blog  -->
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="blog.php">Blog</a>
+            <a class="nav-link active" aria-current="page" href="blog.php">Shop</a>
           </li>
-          
 
          <!-- brand -->
 
@@ -82,17 +96,17 @@ git push -->
                 </sup></a>
           </li>
 <!-- total -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" aria-current="page" href="">Total Price: <?php
             total_cart_price();
   
             ?>
             </a>
-          </li>
-          <!-- login -->
+          </li> -->
+          <!-- register -->
           <li class="nav-item">
-            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_login.php">
-              Login</a>
+            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_registration.php">
+              Register</a>
           </li>
           <!-- search -->
           <li class="nav-item">
@@ -107,6 +121,39 @@ git push -->
       </div>
     </div>
   </nav>
+  <?php
+  cart();
+  ?>
+  <!-- second nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="top: 100px;">
+  <div class="container">
+    <ul class="navbar-nav me-auto">
+    <?php
+
+if(!isset($_SESSION['username'])){
+  echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome Guest</a>
+      </li>";
+}else{
+  echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome ".$_SESSION['username']."</a>
+      </li>";
+}
+
+      if(!isset($_SESSION['username'])){
+        echo "<li class='nav-item'>
+        <a class='nav-link ' href='user_login.php'>Login</a>
+      </li>";
+      }else{
+        echo "<li class='nav-item'>
+        <a class='nav-link ' href='logout.php'>Logout</a>
+      </li>";
+      }
+
+      ?>
+    </ul>
+  </div>
+</nav>
 
   <section id="blog-home" class="pt-5 mt-5 container">
 

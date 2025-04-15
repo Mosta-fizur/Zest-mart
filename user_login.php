@@ -5,6 +5,7 @@ git push -->
 <?php
 include("connection.php");
 include("common_function.php");
+@session_start();
 
 ?>
 
@@ -125,7 +126,7 @@ if(isset($_POST['user_login'])){
     $user_username = $_POST['user_username'];
     $user_password = $_POST['user_password'];
     
-    $select_query = "select * from `user_table` where username = '$user_username'";
+    $select_query = "select * from user_table where username = '$user_username'";
     $result = mysqli_query($conn, $select_query);
     $row_count = mysqli_num_rows($result);
     $row_data = mysqli_fetch_assoc($result);
@@ -133,7 +134,7 @@ if(isset($_POST['user_login'])){
 
 
     // cart item
-    $select_query_cart = "select * from `cart_details` where ip_address = '$user_ip'";
+    $select_query_cart = "select * from cart_details where ip_address = '$user_ip'";
     $select_cart = mysqli_query($conn, $select_query_cart);
     $row_count_cart = mysqli_num_rows($select_cart);
 
@@ -143,13 +144,14 @@ if(isset($_POST['user_login'])){
         if(password_verify($user_password, $row_data['user_password'])){
 
             // echo "<script>alert('Login successful.')</script>";
-            if($rows_count == 1 and $row_count_cart == 0){
+            if($row_count == 1 and $row_count_cart == 0){
                 $_SESSION['username'] = $user_username;
                 echo "<script>alert('Login successful.')</script>";
                 echo "<script>window.open('profile.php','_self')</script>";
             }else{
                 $_SESSION['username'] = $user_username;
-                echo "<script>alert('Login successful.')</script>";
+                echo "<script>alert('Login successful. 
+                you have items in your cart.')</script>";
                 echo "<script>window.open('payment.php','_self')</script>";
             }
 
