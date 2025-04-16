@@ -42,13 +42,14 @@ session_start();
     .pagination a {
       color: #000;
     }
-    .navbar.bg-body-tertiary {
-  z-index: 1030;
-}
 
-.navbar.bg-dark {
-  z-index: 1020;
-}
+    .navbar.bg-body-tertiary {
+      z-index: 1030;
+    }
+
+    .navbar.bg-dark {
+      z-index: 1020;
+    }
   </style>
 
   <title>Zest Mart</title>
@@ -58,7 +59,7 @@ session_start();
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
+      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
@@ -69,79 +70,80 @@ session_start();
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
-<!-- shop   -->
+          <!-- shop   -->
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
 
-         <!-- brand -->
+          <!-- brand -->
 
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Brand
-          </a>
-          <ul class="dropdown-menu">
-            <?php
-            getbrands();
-            ?>
-            
-          </ul>
-        </li>
-<!-- category -->
-          
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Category
-          </a>
-          <ul class="dropdown-menu">
-            <?php
-            getcategories();
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Brand
+            </a>
+            <ul class="dropdown-menu">
+              <?php
+              getbrands();
+              ?>
 
-            ?>
-            
-          </ul>
-        </li>
+            </ul>
+          </li>
+          <!-- category -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Category
+            </a>
+            <ul class="dropdown-menu">
+              <?php
+              getcategories();
+
+              ?>
+
+            </ul>
+          </li>
           <!-- cart -->
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="cart.php">
               <i class="fa-solid fa-bag-shopping"></i><sup>
-                <?php 
-                cart_item(); 
+                <?php
+                cart_item();
                 ?>
-                </sup></a>
+              </sup></a>
           </li>
-<!-- total -->
+          <!-- total -->
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="">Total Price: <?php
             total_cart_price();
-  
+
             ?>
             </a>
           </li>
           <!-- register -->
-           <?php
-           if (isset($_SESSION['username'])){
+          <?php
+          if (isset($_SESSION['username'])) {
             echo "<li class='nav-item'>
             <a class='nav-link log_nav pb-1 my-1 text-center' aria-current='page' href='profile.php'>
               My account</a>
           </li>";
-           }else{
+          } else {
             echo "<li class='nav-item'>
             <a class='nav-link log_nav pb-1 my-1' aria-current='page' href='user_registration.php'>
               Register</a>
           </li>";
-           }
-           ?>
-          
+          }
+          ?>
+
           <!-- search -->
           <li class="nav-item">
             <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
-        <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        
-         <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
-      </form>
+              <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search"
+                aria-label="Search" name="search_data">
+
+              <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
+            </form>
           </li>
-          
+
 
       </div>
     </div>
@@ -151,36 +153,36 @@ session_start();
   ?>
   <!-- second nav -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="top: 100px;">
-  <div class="container">
-    <ul class="navbar-nav me-auto">
-      
-      
-      <?php
+    <div class="container">
+      <ul class="navbar-nav me-auto">
 
-if(!isset($_SESSION['username'])){
-  echo "<li class='nav-item'>
+
+        <?php
+
+        if (!isset($_SESSION['username'])) {
+          echo "<li class='nav-item'>
         <a href='#' class='nav-link text-white'>Welcome Guest</a>
       </li>";
-}else{
-  echo "<li class='nav-item'>
-        <a href='#' class='nav-link text-white'>Welcome ".$_SESSION['username']."</a>
+        } else {
+          echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome " . $_SESSION['username'] . "</a>
       </li>";
-}
+        }
 
-      if(!isset($_SESSION['username'])){
-        echo "<li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo "<li class='nav-item'>
         <a class='nav-link ' href='user_login.php'>Login</a>
       </li>";
-      }else{
-        echo "<li class='nav-item'>
+        } else {
+          echo "<li class='nav-item'>
         <a class='nav-link ' href='logout.php'>Logout</a>
       </li>";
-      }
+        }
 
-      ?>
-    </ul>
-  </div>
-</nav>
+        ?>
+      </ul>
+    </div>
+  </nav>
 
   <section id="home">
 
@@ -188,7 +190,7 @@ if(!isset($_SESSION['username'])){
       <h5>NEW ARRAIVALS</h5>
       <h1><span>Best Price </span>This Ramadan</h1>
       <p>Zest Mart offers you the best deals <br> on the latest products</p>
-      <button>Shop Now</button>
+      <button><a href="shop.php" class=" text-white text-decoration-none">Shop Now</a></button>
     </div>
 
   </section>
@@ -212,21 +214,24 @@ if(!isset($_SESSION['username'])){
         <img class="img-fluid" src="./image/new/1.jpg" alt="">
         <div class="details">
           <h2>Extreme Rare Sneakers</h2>
-          <button class="text-uppercase">Shop Now</button>
+          <button class="text-uppercase"><a href="shop.php" class=" text-black text-decoration-none">Shop
+              Now</a></button>
         </div>
       </div>
       <div class="one col-lg-4 col-md-12 col-12 p-0">
         <img class="img-fluid" src="./image/new/5.jpg" alt="">
         <div class="details">
           <h2>Awesome Blank Outfit</h2>
-          <button class="text-uppercase">Shop Now</button>
+          <button class="text-uppercase"><a href="shop.php" class=" text-black text-decoration-none">Shop
+              Now</a></button>
         </div>
       </div>
       <div class="one col-lg-4 col-md-12 col-12 p-0">
         <img class="img-fluid" src="./image/new/3.jpg" alt="">
         <div class="details">
           <h2>Sportswear Up To 40% Off</h2>
-          <button class="text-uppercase">Shop Now</button>
+          <button class="text-uppercase"><a href="shop.php" class=" text-black text-decoration-none">Shop
+              Now</a></button>
         </div>
       </div>
     </div>
@@ -240,89 +245,18 @@ if(!isset($_SESSION['username'])){
       <hr class="mx-auto">
       <p>Here you can check out our new and featured products with fair price on Zest Mart.</p>
     </div>
-    <div class="row mx-auto container-fluid">
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/1.jpg" alt="">
-        <!-- <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div> -->
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4500 Taka
-        </h4>
-        <a href=""><button class="buy-btn">Buy Now</button></a>
-       
-        
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/2.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Sports Boots
-        </h5>
-        <h4>
-          4000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/3.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Classy Black Bag
-        </h5>
-        <h4>
-          2500 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-      <div class="product text-center col-lg-3 col-md-4 col-12">
-        <img class="img-fluid mb-3" src="./image/featured/4.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <h5 class="p-name">
-          Knee Cap
-        </h5>
-        <h4>
-          1000 Taka
-        </h4>
-        <button class="buy-btn">Buy Now</button>
-      </div>
-    </div>
+
   </section>
 
   <section id="banner" class="my-5 py-5">
     <div class="container">
       <h4>MID SEASON'S SALE</h4>
       <h1>Spring Collection <br> UP TO 25% OFF</h1>
-      <button class="text-uppercase">Shop Now</button>
+      <button class="text-uppercase"><a href="shop.php" class=" text-white text-decoration-none">Shop Now</a></button>
     </div>
   </section>
 
-  <section id="cloths" class="my-5">
+  <!-- <section id="cloths" class="my-5">
     <div class="container text-center mt-5 py-5">
       <h3>
         Dresses and Jumpsuits
@@ -493,13 +427,7 @@ if(!isset($_SESSION['username'])){
     <div class="row mx-auto container-fluid">
       <div class="product text-center col-lg-3 col-md-4 col-12">
         <img class="img-fluid mb-3" src="./image/shoes/1.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
+        
         <h5 class="p-name">
           Ash White Shoes
         </h5>
@@ -510,13 +438,7 @@ if(!isset($_SESSION['username'])){
       </div>
       <div class="product text-center col-lg-3 col-md-4 col-12">
         <img class="img-fluid mb-3" src="./image/shoes/2.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
+        
         <h5 class="p-name">
           Faded Blue Runing Shoes
         </h5>
@@ -527,13 +449,7 @@ if(!isset($_SESSION['username'])){
       </div>
       <div class="product text-center col-lg-3 col-md-4 col-12">
         <img class="img-fluid mb-3" src="./image/shoes/3.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
+        
         <h5 class="p-name">
           Redro Running Trackers
         </h5>
@@ -544,13 +460,7 @@ if(!isset($_SESSION['username'])){
       </div>
       <div class="product text-center col-lg-3 col-md-4 col-12">
         <img class="img-fluid mb-3" src="./image/shoes/4.jpg" alt="">
-        <div class="star">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
+        
         <h5 class="p-name">
           Puma Tracker (Black)
         </h5>
@@ -560,9 +470,9 @@ if(!isset($_SESSION['username'])){
         <button class="buy-btn">Buy Now</button>
       </div>
     </div>
-  </section>
+  </section> -->
 
-<!-- footer -->
+  <!-- footer -->
   <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">
       <div class="footer-one col-lg-3 col-md-3 col-12">
@@ -644,7 +554,7 @@ if(!isset($_SESSION['username'])){
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

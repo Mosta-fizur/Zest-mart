@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2025 at 01:12 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Apr 16, 2025 at 05:38 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `brands` (
   `brand_id` int(11) NOT NULL,
   `brand_title` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `brands`
@@ -44,7 +44,8 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 (5, 'Titan'),
 (6, 'Curren'),
 (7, 'Rolex'),
-(8, 'Naviforce');
+(8, 'Naviforce'),
+(9, 'Puma');
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,7 @@ CREATE TABLE `cart_details` (
   `product_id` int(11) NOT NULL,
   `ip_address` varchar(255) NOT NULL,
   `quantity` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,7 @@ CREATE TABLE `cart_details` (
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category_title` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
@@ -92,7 +93,7 @@ CREATE TABLE `orders_pending` (
   `product_id` int(11) NOT NULL,
   `quantity` int(255) NOT NULL,
   `order_status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders_pending`
@@ -101,7 +102,10 @@ CREATE TABLE `orders_pending` (
 INSERT INTO `orders_pending` (`order_id`, `user_id`, `invoice_number`, `product_id`, `quantity`, `order_status`) VALUES
 (1, 1, 293082342, 9, 1, 'pending'),
 (2, 1, 1379460091, 7, 1, 'pending'),
-(3, 1, 245960719, 8, 1, 'pending');
+(3, 1, 245960719, 8, 1, 'pending'),
+(4, 1, 903827527, 7, 1, 'pending'),
+(5, 1, 49598988, 9, 1, 'pending'),
+(6, 1, 1037712245, 7, 1, 'pending');
 
 -- --------------------------------------------------------
 
@@ -122,7 +126,7 @@ CREATE TABLE `products` (
   `product_price` varchar(100) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -150,14 +154,14 @@ CREATE TABLE `user_orders` (
   `total_products` int(255) NOT NULL,
   `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `order_status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_orders`
 --
 
 INSERT INTO `user_orders` (`order_id`, `user_id`, `amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`) VALUES
-(1, 1, 17500, 293082342, 1, '2025-04-15 08:13:07', 'pending'),
+(1, 1, 17500, 293082342, 1, '2025-04-15 14:01:52', 'Complete'),
 (2, 1, 12500, 1379460091, 1, '2025-04-15 08:19:24', 'pending'),
 (3, 1, 15000, 245960719, 1, '2025-04-15 08:24:49', 'pending'),
 (4, 1, 0, 771020034, 0, '2025-04-15 08:36:31', 'pending'),
@@ -166,7 +170,34 @@ INSERT INTO `user_orders` (`order_id`, `user_id`, `amount_due`, `invoice_number`
 (7, 1, 0, 1412000988, 0, '2025-04-15 09:58:45', 'pending'),
 (8, 1, 0, 1124580571, 0, '2025-04-15 10:02:48', 'pending'),
 (9, 1, 0, 1154391417, 0, '2025-04-15 10:29:26', 'pending'),
-(10, 1, 0, 39765270, 0, '2025-04-15 11:07:01', 'pending');
+(10, 1, 0, 39765270, 0, '2025-04-15 11:07:01', 'pending'),
+(11, 1, 0, 1695106325, 0, '2025-04-15 11:46:52', 'pending'),
+(12, 1, 12500, 903827527, 1, '2025-04-15 12:58:46', 'pending'),
+(13, 1, 0, 2126166323, 0, '2025-04-15 12:59:22', 'pending'),
+(14, 1, 17500, 49598988, 1, '2025-04-15 13:00:43', 'pending'),
+(15, 1, 15500, 1037712245, 2, '2025-04-15 13:12:44', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_payments`
+--
+
+CREATE TABLE `user_payments` (
+  `payment_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `invoice_number` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `payment_mode` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_payments`
+--
+
+INSERT INTO `user_payments` (`payment_id`, `order_id`, `invoice_number`, `amount`, `payment_mode`, `date`) VALUES
+(1, 1, 293082342, 17500, 'VISA', '2025-04-15 14:01:52');
 
 -- --------------------------------------------------------
 
@@ -183,7 +214,7 @@ CREATE TABLE `user_table` (
   `user_ip` varchar(100) NOT NULL,
   `user_address` varchar(255) NOT NULL,
   `user_mobile` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_table`
@@ -192,8 +223,7 @@ CREATE TABLE `user_table` (
 INSERT INTO `user_table` (`user_id`, `username`, `user_email`, `user_password`, `user_image`, `user_ip`, `user_address`, `user_mobile`) VALUES
 (1, 'mosta', ' mosta@g.com', '$2y$10$JW9.mTGxakYl4L7H58B1UeEEdWmH79zDd4uqVlwWKLy/ArLgi7PzG', ' 2.jpg', '::1', ' faka', '1232132123'),
 (2, 'rfd', ' dfd@sd', '$2y$10$Pv/bjCObizsyC.HFoFq0/uVn2c7HxDSqOwgRYCorfpdxzaXVW08Ce', ' 3.jpg', '::1', ' zsgzs', '3422224'),
-(3, 'mahin', ' mah@gm.com', '$2y$10$oo9o/QSTiUtAe6gDSI4IueCrOwxE/y3Fc5JPvVcA9kK6oDj7oaPn.', ' 2.webp', '::1', ' sdfs', '32432432'),
-(4, 'sal', 'sas@dsd', '$2y$10$iYSEjagWuxMXbS.D9OOm9ewewJiN9/nx4.DgzjeDWc5xFuzRXd7YC', 'sal.jpg', '::1', ' sad', '234242');
+(3, 'mahin', ' mah@gm.com', '$2y$10$oo9o/QSTiUtAe6gDSI4IueCrOwxE/y3Fc5JPvVcA9kK6oDj7oaPn.', ' 2.webp', '::1', ' sdfs', '32432432');
 
 --
 -- Indexes for dumped tables
@@ -236,6 +266,12 @@ ALTER TABLE `user_orders`
   ADD PRIMARY KEY (`order_id`);
 
 --
+-- Indexes for table `user_payments`
+--
+ALTER TABLE `user_payments`
+  ADD PRIMARY KEY (`payment_id`);
+
+--
 -- Indexes for table `user_table`
 --
 ALTER TABLE `user_table`
@@ -249,7 +285,7 @@ ALTER TABLE `user_table`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -261,7 +297,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orders_pending`
 --
 ALTER TABLE `orders_pending`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -273,7 +309,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `user_orders`
 --
 ALTER TABLE `user_orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `user_payments`
+--
+ALTER TABLE `user_payments`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_table`

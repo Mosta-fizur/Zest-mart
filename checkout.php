@@ -42,13 +42,14 @@ session_start();
     .pagination a {
       color: #000;
     }
-    .navbar.bg-body-tertiary {
-  z-index: 1030;
-}
 
-.navbar.bg-dark {
-  z-index: 1020;
-}
+    .navbar.bg-body-tertiary {
+      z-index: 1030;
+    }
+
+    .navbar.bg-dark {
+      z-index: 1020;
+    }
   </style>
 
   <title>Zest Mart</title>
@@ -58,7 +59,7 @@ session_start();
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
+      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
@@ -73,64 +74,75 @@ session_start();
             <a class="nav-link active" aria-current="page" href="shop.php">Shop</a>
           </li>
 
-       
+
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="blog.php">Blog</a>
           </li>
-          
-          
 
-          
+
+
+
           <!-- register -->
-          <li class="nav-item">
-            <a class="nav-link log_nav pb-1 my-1" aria-current="page" href="user_registration.php">
+          <?php
+          if (isset($_SESSION['username'])) {
+            echo "<li class='nav-item'>
+            <a class='nav-link log_nav pb-1 my-1 text-center' aria-current='page' href='profile.php'>
+              My account</a>
+          </li>";
+          } else {
+            echo "<li class='nav-item'>
+            <a class='nav-link log_nav pb-1 my-1' aria-current='page' href='user_registration.php'>
               Register</a>
-          </li>
-         
+          </li>";
+          }
+          ?>
+
+
           <li class="nav-item">
             <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
-        <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        <!-- <button class="btn btn-dark " type="submit">Search</button> -->
-         <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
-      </form>
+              <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search"
+                aria-label="Search" name="search_data">
+              <!-- <button class="btn btn-dark " type="submit">Search</button> -->
+              <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
+            </form>
           </li>
-          
+
 
       </div>
     </div>
   </nav>
   <!-- second nav -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="top: 100px;">
-  <div class="container">
-    <ul class="navbar-nav me-auto">
-    <?php
+    <div class="container">
+      <ul class="navbar-nav me-auto">
+        <?php
 
-if(!isset($_SESSION['username'])){
-  echo "<li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo "<li class='nav-item'>
         <a href='#' class='nav-link text-white'>Welcome Guest</a>
       </li>";
-}else{
-  echo "<li class='nav-item'>
-        <a href='#' class='nav-link text-white'>Welcome ".$_SESSION['username']."</a>
+        } else {
+          echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome " . $_SESSION['username'] . "</a>
       </li>";
-}
+        }
 
-      if(!isset($_SESSION['username'])){
-        echo "<li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo "<li class='nav-item'>
         <a class='nav-link ' href='user_login.php'>Login</a>
       </li>";
-      }else{
-        echo "<li class='nav-item'>
+        } else {
+          echo "<li class='nav-item'>
         <a class='nav-link ' href='logout.php'>Logout</a>
       </li>";
-      }
+        }
 
-      ?>
-      
-      
-    </ul>
-  </div>
-</nav>
+        ?>
+
+
+      </ul>
+    </div>
+  </nav>
 
 
 
@@ -141,29 +153,29 @@ if(!isset($_SESSION['username'])){
       </h2>
       <hr> -->
       <!-- <p>Here you can check out our new and featured products with fair price on Zest Mart.</p> -->
-       <div class="row px-1">
+      <div class="row px-1">
         <div class="col-md-12">
-            <div class="row">
-                <?php
-                if(!isset($_SESSION['username'])){
-                    include('user_login.php');
-                }else{
-                    include('payment.php');
-                }
+          <div class="row">
+            <?php
+            if (!isset($_SESSION['username'])) {
+              include('user_login.php');
+            } else {
+              include('payment.php');
+            }
 
-                ?>
-            </div>
+            ?>
+          </div>
         </div>
-        
-       </div>
-    </div>
-    <div class="row mx-auto container" >
 
-    
+      </div>
+    </div>
+    <div class="row mx-auto container">
+
+
 
     </div>
-      
-      
+
+
   </section>
 
 

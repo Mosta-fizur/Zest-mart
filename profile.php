@@ -42,30 +42,33 @@ session_start();
     .pagination a {
       color: #000;
     }
+
     .navbar.bg-body-tertiary {
-  z-index: 1030;
-}
+      z-index: 1030;
+    }
 
 
-.navbar.bg-dark {
-  z-index: 1020;
-}
-.profile_image{
-    width: 90%;
-    margin: auto;
-    display: block;
-    /* height: 100%; */
-    object-fit: contain;
-}
-body{
-    overflow-x: hidden;
-}
-.edit_image{
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-}
+    .navbar.bg-dark {
+      z-index: 1020;
+    }
 
+    .profile_image {
+      width: 90%;
+      margin: auto;
+      display: block;
+      /* height: 100%; */
+      object-fit: contain;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .edit_image {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
   </style>
 
   <title>Zest Mart</title>
@@ -75,7 +78,7 @@ body{
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem" ></a>
+      <a class="navbar-brand " href="index.php"><img src="./image/logo/zestmart-logo.png" height="80rem"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span><i id="bar" class="fa-solid fa-bars fa-2xl"></i></span>
@@ -86,52 +89,52 @@ body{
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
-<!-- shop   -->
+          <!-- shop   -->
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
 
-         <!-- brand -->
+          <!-- brand -->
 
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Brand
-          </a>
-          <ul class="dropdown-menu">
-            <?php
-            getbrands();
-            ?>
-            
-          </ul>
-        </li>
-<!-- category -->
-          
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Category
-          </a>
-          <ul class="dropdown-menu">
-            <?php
-            getcategories();
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Brand
+            </a>
+            <ul class="dropdown-menu">
+              <?php
+              getbrands();
+              ?>
 
-            ?>
-            
-          </ul>
-        </li>
+            </ul>
+          </li>
+          <!-- category -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Category
+            </a>
+            <ul class="dropdown-menu">
+              <?php
+              getcategories();
+
+              ?>
+
+            </ul>
+          </li>
           <!-- cart -->
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="cart.php">
               <i class="fa-solid fa-bag-shopping"></i><sup>
-                <?php 
-                cart_item(); 
+                <?php
+                cart_item();
                 ?>
-                </sup></a>
+              </sup></a>
           </li>
-<!-- total -->
+          <!-- total -->
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="">Total Price: <?php
             total_cart_price();
-  
+
             ?>
             </a>
           </li>
@@ -143,53 +146,54 @@ body{
           <!-- search -->
           <li class="nav-item">
             <form class="nav-link d-flex " role="search" action="search_product.php" method="get">
-        <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        
-         <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
-      </form>
+              <input class="m-1 p-1 border border-secondary-subtle rounded-2" type="search" placeholder="Search"
+                aria-label="Search" name="search_data">
+
+              <input type="submit" value="Search" class="btn btn-dark" name="search_data_product">
+            </form>
           </li>
-          
+
 
       </div>
     </div>
   </nav>
   <?php
- 
+
   cart();
 
   ?>
   <!-- second nav -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="top: 100px;">
-  <div class="container">
-    <ul class="navbar-nav me-auto">
-    <?php
+    <div class="container">
+      <ul class="navbar-nav me-auto">
+        <?php
 
-if(!isset($_SESSION['username'])){
-  echo "<li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo "<li class='nav-item'>
         <a href='#' class='nav-link text-white'>Welcome Guest</a>
       </li>";
-}else{
-  echo "<li class='nav-item'>
-        <a href='#' class='nav-link text-white'>Welcome ".$_SESSION['username']."</a>
+        } else {
+          echo "<li class='nav-item'>
+        <a href='#' class='nav-link text-white'>Welcome " . $_SESSION['username'] . "</a>
       </li>";
-}
+        }
 
-      if(!isset($_SESSION['username'])){
-        echo "<li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo "<li class='nav-item'>
         <a class='nav-link ' href='user_login.php'>Login</a>
       </li>";
-      }else{
-        echo "<li class='nav-item'>
+        } else {
+          echo "<li class='nav-item'>
         <a class='nav-link ' href='logout.php'>Logout</a>
       </li>";
-      }
+        }
 
-      ?>
-    </ul>
-  </div>
-</nav>
+        ?>
+      </ul>
+    </div>
+  </nav>
 
-<section id="featured" class="my-5 py-5">
+  <section id="featured" class="my-5 py-5">
     <div class="container mt-5 py-5">
       <h2 class="fw-bold">
         My Profile
@@ -197,69 +201,73 @@ if(!isset($_SESSION['username'])){
       <hr>
       <p>Thanks for using Zest Mart.</p>
     </div>
-    <div class="row" >
-    <div class="col-md-2 ">
-            <ul class="navbar-nav bg-dark text-center" style="height:100vh">
-                    <li class="nav-item text-white">
-                        <a class="nav-link " href="#"><h4>Your Profile</h4>
-                        </a>
-                    </li>
-                    <?php
+    <div class="row">
+      <div class="col-md-2 ">
+        <ul class="navbar-nav bg-dark text-center" style="height:100vh">
+          <li class="nav-item text-white">
+            <a class="nav-link " href="#">
+              <h4>Your Profile</h4>
+            </a>
+          </li>
+          <?php
 
-                    $username = $_SESSION['username'];
-                    $user_query = "SELECT * FROM `user_table` WHERE username='$username'";
-                    $user_result = mysqli_query($conn, $user_query);
-                    $row_image = mysqli_fetch_array($user_result);
+          $username = $_SESSION['username'];
+          $user_query = "SELECT * FROM `user_table` WHERE username='$username'";
+          $user_result = mysqli_query($conn, $user_query);
+          $row_image = mysqli_fetch_array($user_result);
 
-                    // Trim spaces 
-                    $user_image = trim($row_image['user_image']);
+          // Trim spaces 
+          $user_image = trim($row_image['user_image']);
 
-                    echo "<li class='nav-item text-white'>
+          echo "<li class='nav-item text-white'>
                     <img src='user_images/$user_image' class='profile_image my-4'>
                     </li>";
 
 
-?>
-                    
-                    <li class="nav-item text-white">
-                        <a class="nav-link " href="profile.php">Pending Orders
-                        </a>
-                    </li>
-                    <li class="nav-item text-white">
-                        <a class="nav-link " href="profile.php?edit_account">Edit account
-                        </a>
-                    </li>
-                    <li class="nav-item text-white">
-                        <a class="nav-link " href="profile.php?my_orders">My orders
-                        </a>
-                    </li>
-                    <li class="nav-item text-white">
-                        <a class="nav-link " href="profile.php?delete_account">Delete Account
-                        </a>
-                    </li>
-                    <li class="nav-item text-white">
-                        <a class="nav-link " href="logout.php">Logout
-                        </a>
-                    </li>
-                    </ul>
-    </div>
-    <div class="col-md-10 text-center">
-        <?php  get_user_order_details();
-            if(isset($_GET['edit_account'])){
-                include('edit_account.php');
-            }
-            if(isset($_GET['my_orders'])){
-                include('user_orders.php');
-            }
-        
+          ?>
+
+          <li class="nav-item text-white">
+            <a class="nav-link " href="profile.php">Pending Orders
+            </a>
+          </li>
+          <li class="nav-item text-white">
+            <a class="nav-link " href="profile.php?edit_account">Edit account
+            </a>
+          </li>
+          <li class="nav-item text-white">
+            <a class="nav-link " href="profile.php?my_orders">My orders
+            </a>
+          </li>
+          <li class="nav-item text-white">
+            <a class="nav-link " href="profile.php?delete_account">Delete Account
+            </a>
+          </li>
+          <li class="nav-item text-white">
+            <a class="nav-link " href="logout.php">Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10 text-center">
+        <?php get_user_order_details();
+        if (isset($_GET['edit_account'])) {
+          include('edit_account.php');
+        }
+        if (isset($_GET['my_orders'])) {
+          include('user_orders.php');
+        }
+        if (isset($_GET['delete_account'])) {
+          include('delete_account.php');
+        }
+
         ?>
+      </div>
     </div>
-     </div>
-     </section>
+  </section>
 
 
 
-<footer class="mt-5 py-5">
+  <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5 m-5">
       <div class="footer-one col-lg-3 col-md-3 col-12">
         <img src="./image/logo/O-removebg-preview.png" alt="">
